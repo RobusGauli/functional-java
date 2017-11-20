@@ -1,4 +1,35 @@
 import java.util.*;
+
+
+class Person {
+    private String name;
+    private Integer age;
+    
+    public Person(String name, Integer age) {
+        this.name = name;
+        this.age = age;
+
+    }
+
+
+    public String getName(){
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+}
+
+
 public class F {
 
     public static void main(String... args) {
@@ -70,74 +101,5 @@ public class F {
     }
 }
 
-interface Predicate<B, T1> {
-    public B apply(T1 t);
-}
-
-interface MappingPredicate<T1, T2> {
-    //takes in type of T1 and return type of T2
-    //person to string or watervare
-    public T2 apply(T1 t);
-}
-
-interface ReducePredicate<A,  T> {
-    public A apply(A a, T t);
-}
-class Lists {
-    public static <T> List<T> filter(List<T> src, Predicate<Boolean, T> predicate) {
-        List<T> results = new ArrayList<T>();
-        for(T t: src) {
-            if(predicate.apply(t)) {
-                results.add(t);
-            }
-        }
-        return results;
-    } 
-
-    public static <T1, T2> List<T2> map(List<T1> src, MappingPredicate<T1, T2> predicate) {
-        List<T2> results = new ArrayList<T2>();
-        for(T1 t: src) {
-            T2 n = predicate.apply(t);
-            results.add(n);
-        }
-        return results;
-    }
-    //accumulator A
-    public static <A, T> A reduce(A seed, List<T> src, ReducePredicate<A, T> reduce) {
-        A accum = seed;
-        for(T t: src) {
-            accum  = reduce.apply(accum, t);
-
-        }
-        return accum;
-    } 
-}
 
 
-class Person {
-    private String name;
-    private Integer age;
-    
-    public Person(String name, Integer age) {
-        this.name = name;
-        this.age = age;
-
-    }
-
-
-    public String getName(){
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-}
